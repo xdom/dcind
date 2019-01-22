@@ -2,7 +2,7 @@
 FROM alpine:3.7
 MAINTAINER Dmitry Matrosov <amidos@amidos.me>
 
-ENV DOCKER_VERSION=17.05.0-ce \
+ENV DOCKER_VERSION=17.09.1-ce \
     DOCKER_COMPOSE_VERSION=1.18.0 \
     ENTRYKIT_VERSION=0.4.0
 
@@ -10,7 +10,7 @@ ENV DOCKER_VERSION=17.05.0-ce \
 RUN apk --update --no-cache \
     add bash curl device-mapper py-pip iptables && \
     rm -rf /var/cache/apk/* && \
-    curl https://get.docker.com/builds/Linux/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
+    curl https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar zx && \
     mv /docker/* /bin/ && chmod +x /bin/docker* && \
     pip install docker-compose==${DOCKER_COMPOSE_VERSION}
 
